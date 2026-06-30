@@ -93,6 +93,25 @@ class DoubleIntegralResult(BaseModel):
     target_date: str
 
 
+# ─── Parish Data ────────────────────────────────────────────────────────────
+
+class ParishData(BaseModel):
+    name: str
+    zone: str               # "urbana" | "rural"
+    latitude: float
+    longitude: float
+    population: int
+    area_km2: float
+    polygon: list           # [[lon, lat], ...]
+    co_level: float = 0.0
+    pm25_level: float = 0.0
+    contamination_index: float = 0.0  # 0-100
+
+
+class ParishesResponse(BaseModel):
+    parishes: List[ParishData]
+
+
 # ─── Plots (base64 PNG) ─────────────────────────────────────────────────────
 
 class PlotsData(BaseModel):

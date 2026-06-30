@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { SimulationResponse, CityInfoResponse } from '../types';
+import type { SimulationResponse, CityInfoResponse, ParishesResponse } from '../types';
 
 const api = axios.create({
   baseURL: '/api',
@@ -40,4 +40,9 @@ export async function getTrapezoidPlot(targetDate: string): Promise<string> {
 export async function getDoubleIntegralPlot(targetDate: string): Promise<string> {
   const { data } = await plotsApi.post('/double', { target_date: targetDate });
   return URL.createObjectURL(data);
+}
+
+export async function getParishes(): Promise<ParishesResponse> {
+  const { data } = await api.get('/parishes');
+  return data;
 }

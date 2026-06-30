@@ -11,6 +11,7 @@ DATA_DIR = BASE_DIR
 # CSV files
 AIR_QUALITY_CSV = DATA_DIR / "air_quality_historical.csv"
 CITY_INFO_CSV = DATA_DIR / "city_info.csv"
+PARROQUIAS_CSV = DATA_DIR / "parroquias_quito.csv"
 
 # OMS limits
 OMS_PM25_LIMIT = 15.0  # µg/m³ daily limit

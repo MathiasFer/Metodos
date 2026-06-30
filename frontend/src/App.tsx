@@ -8,8 +8,9 @@ import TaylorPanel from './components/TaylorPanel';
 import TrapezoidPanel from './components/TrapezoidPanel';
 import DoubleIntegralPanel from './components/DoubleIntegralPanel';
 import ReportPanel from './components/ReportPanel';
+import ParishMap3D from './components/ParishMap3D';
 
-type Tab = 'dashboard' | 'euler' | 'taylor' | 'trapezoid' | 'double' | 'report';
+type Tab = 'dashboard' | 'euler' | 'taylor' | 'trapezoid' | 'double' | 'report' | 'parishes';
 
 const TABS: { key: Tab; label: string; icon: string; color: string }[] = [
   { key: 'dashboard', label: 'Resumen', icon: '🏠', color: 'from-blue-500 to-cyan-400' },
@@ -17,6 +18,7 @@ const TABS: { key: Tab; label: string; icon: string; color: string }[] = [
   { key: 'taylor', label: 'Taylor', icon: '②', color: 'from-green-500 to-emerald-400' },
   { key: 'trapezoid', label: 'Trapecio', icon: '③', color: 'from-purple-500 to-pink-400' },
   { key: 'double', label: 'Integral Doble', icon: '④', color: 'from-indigo-500 to-violet-400' },
+  { key: 'parishes', label: 'Parroquias', icon: '🗺️', color: 'from-emerald-500 to-teal-400' },
   { key: 'report', label: 'Reporte', icon: '📋', color: 'from-amber-500 to-yellow-400' },
 ];
 
@@ -164,6 +166,7 @@ export default function App() {
           {result && activeTab === 'taylor' && <TaylorPanel taylor={result.taylor} plotImage={result.plots?.taylor || ''} />}
           {result && activeTab === 'trapezoid' && <TrapezoidPanel trapezoid={result.trapezoid} plotImage={result.plots?.trapezoid || ''} />}
           {result && activeTab === 'double' && <DoubleIntegralPanel di={result.double_integral} plotImage={result.plots?.double_integral || ''} />}
+          {result && activeTab === 'parishes' && <ParishMap3D />}
           {result && activeTab === 'report' && <ReportPanel result={result} />}
         </div>
       </main>

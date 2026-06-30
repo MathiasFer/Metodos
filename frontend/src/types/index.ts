@@ -89,3 +89,20 @@ export interface CityInfoResponse {
   city: CityInfo;
   summary: DataSummary;
 }
+
+export interface ParishData {
+  name: string;
+  zone: string;
+  latitude: number;
+  longitude: number;
+  population: number;
+  area_km2: number;
+  polygon: number[][];
+  co_level: number;
+  pm25_level: number;
+  contamination_index: number;
+}
+
+export interface ParishesResponse {
+  parishes: ParishData[];
+}

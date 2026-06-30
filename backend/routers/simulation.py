@@ -4,8 +4,8 @@ Simulation API router — endpoints for running numerical methods.
 import base64
 import pandas as pd
 from fastapi import APIRouter, HTTPException
-from models.schemas import SimulationRequest, SimulationResponse, PlotsData
-from services.data_loader import load_data, get_summary
+from models.schemas import SimulationRequest, SimulationResponse, PlotsData, ParishesResponse
+from services.data_loader import load_data, get_summary, load_parishes
 from services.euler import compute_euler
 from services.taylor import compute_taylor
 from services.trapezoid import compute_trapezoid
@@ -149,3 +149,11 @@ def run_simulation(req: SimulationRequest):
         n_future_days=n_future,
         plots=plots,
     )
+
+
+@router.get("/parishes")
+def get_parishes():
+    """Return parish data with contamination levels."""
+    df, _ = _ensure_loaded()
+    parishes = load_parishes(df)
+    return ParishesResponse(parishes=parishes)
